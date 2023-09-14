@@ -1,0 +1,144 @@
+
+.cookie-card {
+    width: 60%;
+    padding: 1rem;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 20px 20px 30px rgba(0, 0, 0, .05);
+    margin: 1rem;
+  }
+  
+  .title {
+    margin-left: 10px;
+    display: block;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: rgb(31 41 55);
+    text-align: start;
+  }
+  .company {
+    margin-left: 10px;
+    display: block;
+    font-weight: 400;
+    color: rgb(31 41 55);
+    text-align: start;
+  }
+  
+  .description {
+    margin: 0.75rem 2rem 0.75rem 2rem;
+    font-size: 0.875rem;
+    text-align:justify;
+    color: rgb(75 85 99);
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+
+
+  .description a {
+    --tw-text-opacity: 1;
+    color: rgb(59 130 246);
+  }
+  
+  .description a:hover {
+    -webkit-text-decoration-line: underline;
+    text-decoration-line: underline;
+  }
+  
+  .actions {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    margin-top: 1rem;
+    -moz-column-gap: 1rem;
+    column-gap: 1rem;
+    flex-shrink: 0;
+  }
+  
+  .pref {
+    font-size: 0.75rem;
+    line-height: 1rem;
+    color: rgb(31 41 55 );
+    -webkit-text-decoration-line: underline;
+    text-decoration-line: underline;
+    transition: all .3s cubic-bezier(0.4, 0, 0.2, 1);
+    border: none;
+    background-color: transparent;
+  }
+  
+  .pref:hover {
+    color: rgb(156 163 175);
+  }
+  
+  .pref:focus {
+    outline: 2px solid transparent;
+    outline-offset: 2px;
+  }
+  
+  .accept {
+    font-size: 0.75rem;
+    line-height: 1rem;
+    background-color: #1ab059;
+    font-weight: 500;
+    border-radius: 0.5rem;
+    color: #fff;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-top: 0.625rem;
+    padding-bottom: 0.625rem;
+    border: none;
+    transition: all .15s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .accept:hover {
+    background-color: #5dc488;
+  }
+  
+  .accept:focus {
+    outline: 2px solid transparent;
+    outline-offset: 2px;
+  }
+
+  /* save button */
+
+  .save {
+    font-size: 0.75rem;
+    line-height: 1rem;
+    background-color: rgb(17 24 39);
+    font-weight: 500;
+    border-radius: 0.5rem;
+    color: #fff;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-top: 0.625rem;
+    padding-bottom: 0.625rem;
+    border: none;
+    transition: all .15s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .save:hover {
+    background-color: rgb(55 65 81);
+  }
+  
+  .save:focus {
+    outline: 2px solid transparent;
+    outline-offset: 2px;
+  }
+
+  .skill-container{
+    margin: 0.75rem 2rem 0.75rem 2rem;
+    max-height: 5rem;
+    overflow: hidden;
+  }
+
+  .skill {
+    display: block;
+    color: #00a6c2;
+    border-radius: 2px;
+    background-color: rgba(0, 166, 194, .05);
+    border: 1px solid rgba(0, 166, 194, .15);
+    padding: 5px 8px;
+    font-size: 12px;
+  }

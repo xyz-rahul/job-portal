@@ -1,0 +1,19 @@
+#about-content {
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f7f7f7;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+#about-content  h1 {
+    font-size: 24px;
+    color: #333;
+}
+
+#about-content  p {
+    font-size: 16px;
+    line-height: 1.5;
+    color: #666;
+}

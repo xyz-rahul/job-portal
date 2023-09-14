@@ -1,0 +1,162 @@
+.nav{
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    background-color: black;
+    justify-content: space-between;
+    height: 50px;
+    align-items: center;
+}
+.nav-left{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+}
+
+.nav-right{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    align-items: center;
+
+}
+.nav-head{
+    /* background-color: antiquewhite; */
+    color: white;
+    margin: 0 10px 0 10px;
+    font-weight: 500;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center; 
+    padding: 0 5px 0 5px;
+    height: 100%;
+}
+
+.nav-links{
+    display:flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    height: 100%;
+}
+
+
+.nav-links>a{
+    color: white;
+    display: flex;
+    /* background-color: antiquewhite; */
+    align-items: center;
+    height: 100%;
+    padding: 0 15px 0 15px;
+}
+
+.nav-links>a:hover{
+    background-color: aliceblue;
+    color: black;
+}
+
+
+/* search container */
+.inputBox_container {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+
+    max-width: 200px;
+    background-color: #5c6370;
+    border-radius: 0.8em;
+    overflow: hidden;
+    margin: 5% 0 5% 0;
+  }
+  
+  .search_icon {
+    height: 1em;
+    padding: 0 0.5em 0 0.8em;
+    fill: #abb2bf;
+  }
+  
+  .inputBox {
+    background-color: transparent;
+    color: #ffffff;
+    outline: none;
+    width: 100%;
+    border: 0;
+    padding: 0.5em 1.5em 0.5em 0;
+    font-size: 1em;
+  }
+  
+  ::placeholder {
+    color: #abb2bf;
+  }
+/* end search container */
+
+
+.user{
+    display: flex;
+    align-items: center;
+    margin: 0 10px 0 10px;
+}
+.user a svg {
+    transition: all 0.5s ease;
+  }
+  
+  .user a svg:hover {
+    transform: rotate(180deg);
+  }
+  
+
+
+
+
+
+/* side navigation */
+.sidenav {
+    height: 100%; /* 100% Full-height */
+    width: 0; /* 0 width - change this with JavaScript */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Stay on top */
+    top: 0;
+    right: 0;
+    background-color: #111; /* Black*/
+    overflow-x: hidden; /* Disable horizontal scroll */
+    padding-top: 60px; /* Place content 60px from the top */
+    transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+}
+ 
+/* The navigation menu links */
+.sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+    text-align: left;
+}
+ 
+/* When you mouse over the navigation links, change their color */
+.sidenav a:hover, .offcanvas a:focus{
+    color: #f1f1f1;
+}
+ 
+/* Position and style the close button (top right corner) */
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+ 
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+}
