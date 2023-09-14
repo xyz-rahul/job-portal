@@ -97,3 +97,17 @@
   /* job card */
 
   
+
+  .no-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+    font-size: 3rem;
+    font-weight: 500;
+    margin: 0; /* Remove any default margin */
+    padding: 0; /* Remove any default padding */
+    line-height: 1.5; /* Adjust line-height for better spacing if needed */
+  }
+   

@@ -6,20 +6,17 @@ import { JobsContext } from './Context';
 export default function JobPage() {
   const { jobs } = useContext(JobsContext);
 
-  // Check if the 'jobs' array exists and has elements
-  if (!jobs || jobs.length === 0) {
-    const jobsNotFoundError = {
-      code: 204,
-      message: "No Jobs Available",
-      detail: null
-    }
-    throw jobsNotFoundError;
-  }
   
   return (
     <div className='joblisting'>
 
-      {jobs && jobs.map((job) => (
+      {
+        !jobs || jobs.length === 0 ? (
+          <div className="no-content">
+            <p>No content</p>
+          </div>
+        ) :
+      jobs && jobs.map((job) => (
         <JobCard
 
         key={job.id}
@@ -30,7 +27,8 @@ export default function JobPage() {
         skills={job.requirement} 
         description = {job.description}
         />
-      ))}
+      ))
+    }
     </div>
 
   );
