@@ -1,5 +1,6 @@
 package com.example.jobPortal.entity;
 
+import com.example.jobPortal.utils.CompanyType;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import lombok.AllArgsConstructor;
@@ -37,6 +38,9 @@ public class Company {
 
     @Email
     private String email;
+
+    @Enumerated(EnumType.STRING)
+    private CompanyType companyType;
 
     @ElementCollection
     @CollectionTable(name = "company_location", joinColumns = @JoinColumn(name = "company_id"))

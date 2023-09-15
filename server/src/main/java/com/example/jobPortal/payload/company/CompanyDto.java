@@ -1,5 +1,6 @@
 package com.example.jobPortal.payload.company;
 
+import com.example.jobPortal.utils.CompanyType;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.validation.constraints.Email;
@@ -16,6 +17,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
+@JsonFormat(shape = JsonFormat.Shape.OBJECT)
 public class CompanyDto {
     private Integer id;
 
@@ -35,6 +37,9 @@ public class CompanyDto {
     private List<String> products;
 
     private String description;
+
+    @JsonProperty("company type")
+    private CompanyType companyType;
 
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss") // Customize date format
     private Date createdAt;

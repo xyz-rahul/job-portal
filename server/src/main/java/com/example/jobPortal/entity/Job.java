@@ -1,5 +1,8 @@
 package com.example.jobPortal.entity;
 
+import com.example.jobPortal.utils.Education;
+import com.example.jobPortal.utils.Industry;
+import com.example.jobPortal.utils.WorkMode;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -39,9 +42,15 @@ public class Job {
     @Column(name = "experience_required")
     private String experienceRequired;
 
-    private String workMode;
+    @Enumerated(EnumType.STRING)
+    @Column(name = "education_required")
+    private Education educationRequired;
 
-    private String industry;
+    @Enumerated(EnumType.STRING)
+    private WorkMode workMode;
+
+    @Enumerated(EnumType.STRING)
+    private Industry industry;
 
     private String salaryRange;
 

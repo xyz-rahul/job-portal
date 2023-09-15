@@ -1,5 +1,7 @@
 package com.example.jobPortal.payload.company;
 
+import com.example.jobPortal.utils.CompanyType;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.validation.constraints.Email;
 import lombok.AllArgsConstructor;
@@ -33,4 +35,7 @@ public class CompanyUpdateDto {
     private List<String> products;
 
     private String description;
+
+    @JsonProperty("company type")
+    private CompanyType companyType;
 }

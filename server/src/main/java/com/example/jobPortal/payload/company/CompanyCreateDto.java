@@ -1,6 +1,10 @@
 package com.example.jobPortal.payload.company;
 
+import com.example.jobPortal.utils.CompanyType;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.validation.constraints.Email;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -31,6 +35,9 @@ public class CompanyCreateDto {
     private List<String> products;
 
     private String description;
+
+    @JsonProperty("company type")
+    private CompanyType companyType;
 }
 
 

@@ -1,5 +1,9 @@
 package com.example.jobPortal.payload.job;
 
+import com.example.jobPortal.utils.Education;
+import com.example.jobPortal.utils.Industry;
+import com.example.jobPortal.utils.WorkMode;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
@@ -16,10 +20,16 @@ public class JobCreateDto {
     @JsonProperty("experience_required")
     private String experienceRequired;
 
-    @JsonProperty("work_mode")
-    private String workMode;
+    @JsonFormat(shape = JsonFormat.Shape.OBJECT)
+    @JsonProperty("education_required")
+    private Education educationRequired;
 
-    private String industry;
+    @JsonFormat(shape = JsonFormat.Shape.OBJECT)
+    @JsonProperty("work_mode")
+    private WorkMode workMode;
+
+    @JsonFormat(shape = JsonFormat.Shape.OBJECT)
+    private Industry industry;
 
     @JsonProperty("salary_range")
     private String salaryRange;
