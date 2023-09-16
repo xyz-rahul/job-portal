@@ -4,6 +4,7 @@ import com.example.jobPortal.payload.job.JobCreateDto;
 import com.example.jobPortal.payload.job.JobDto;
 import com.example.jobPortal.payload.job.JobUpdateDto;
 import com.example.jobPortal.service.JobService;
+import com.example.jobPortal.utils.JobFilterOptions;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -79,6 +80,15 @@ public class JobController {
         return ResponseEntity.ok(jobs);
     }
 
+    @GetMapping("/getJobFilterOptions")
+    public ResponseEntity<JobFilterOptions> getJobFilterOptions() {
+        JobFilterOptions jobFilterOptions = new JobFilterOptions();
+        if (jobFilterOptions != null) {
+            return new ResponseEntity<>(jobFilterOptions, HttpStatus.OK);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
 
 }
 
