@@ -4,10 +4,7 @@ import com.example.jobPortal.utils.Education;
 import com.example.jobPortal.utils.Industry;
 import com.example.jobPortal.utils.WorkMode;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -54,6 +51,7 @@ public class Job {
 
     private String salaryRange;
 
+    @ToString.Exclude
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "company_id", referencedColumnName = "company_id")
     private Company company;
