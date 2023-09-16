@@ -7,6 +7,10 @@ import com.example.jobPortal.payload.job.JobUpdateDto;
 import com.example.jobPortal.repository.querySpecification.CustomSpecification;
 import com.example.jobPortal.repository.JobRepository;
 import com.example.jobPortal.service.JobService;
+import com.example.jobPortal.utils.CompanyType;
+import com.example.jobPortal.utils.Education;
+import com.example.jobPortal.utils.Industry;
+import com.example.jobPortal.utils.WorkMode;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -69,18 +73,33 @@ public class JobServiceImpl implements JobService {
         return false;
     }
 
-    public Page<JobDto> getAll(int pageNumber, int pageSize, String sortBy, String sortDirection, Map<String, String> filters) {
+
+    public Page<JobDto> getAll(
+            int pageNumber,
+            int pageSize,
+            String sortBy,
+            String sortDirection,
+            List<WorkMode> workMode,
+            List<Industry> industry,
+            List<Education> educationRequired,
+            List<CompanyType> companyType
+    ){
+
         Sort sort = Sort.by(
                 sortDirection.equalsIgnoreCase("asc")
                         ? Sort.Direction.ASC:Sort.Direction.DESC,
                 sortBy);
         Pageable pageable = PageRequest.of(pageNumber, pageSize, sort);
 
-        Specification<Job> specification = CustomSpecification.getJobs(filters);
-
-        Page<Job> jobPage = jobRepository.findAll(specification, pageable);
+        Page<Job> jobPage = jobRepository.findByWorkModeInOrIndustryInOrEducationRequiredInOrCompanyCompanyTypeIn(
+                workMode,
+                industry,
+                educationRequired,
+                companyType,
+                pageable
+        );
+        System.out.println(jobPage);
 
         return jobPage.map(job -> modelMapper.map(job, JobDto.class));
-
     }
 }

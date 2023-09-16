@@ -20,7 +20,7 @@ public enum CompanyType {
     }
 
     @JsonValue//needed for deserialization
-    public String getValue() {
+    public String getLabel() {
         return label;
     }
 }

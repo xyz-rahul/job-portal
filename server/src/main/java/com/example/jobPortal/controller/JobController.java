@@ -4,7 +4,9 @@ import com.example.jobPortal.payload.job.JobCreateDto;
 import com.example.jobPortal.payload.job.JobDto;
 import com.example.jobPortal.payload.job.JobUpdateDto;
 import com.example.jobPortal.service.JobService;
-import com.example.jobPortal.utils.JobFilterOptions;
+import com.example.jobPortal.utils.*;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.deser.std.EnumDeserializer;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -12,7 +14,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Arrays;
+import java.util.EnumSet;
+import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/jobs")
@@ -69,16 +75,36 @@ public class JobController {
 
     @GetMapping("/all")
     public ResponseEntity<Page<JobDto>> getAllJobs(
-            @RequestParam(defaultValue = "0") int page,
-            @RequestParam(defaultValue = "10") int size,
-            @RequestParam(defaultValue = "id") String sortField,
-            @RequestParam(defaultValue = "ASC") String sortDirection,
-            @RequestParam Map<String, String> filters) {
+            @RequestParam(value = "page number",defaultValue = "0",required = false) int page,
+            @RequestParam(value = "page size",defaultValue = "10",required = false) int size,
+            @RequestParam(value = "sort field",defaultValue = "id",required = false) String sortField,
+            @RequestParam(value = "sort direction",defaultValue = "ASC",required = false) String sortDirection,
+            @RequestParam(value = "education required",required = false)  List<Education> educationRequired,
+            @RequestParam(value = "work mode",required = false) List<WorkMode> workMode,
+            @RequestParam(value = "industry",required = false) List<Industry> industry,
+            @RequestParam(value = "company type",required = false) List<CompanyType> companyType
+            ) {
 
-        Page<JobDto> jobs = jobService.getAll(page,size,sortField,sortDirection,filters);
+            //null are not allowed in repo function
+            if(workMode == null || workMode.isEmpty()) workMode = Arrays.stream(WorkMode.values()).toList();
+            if(industry == null || industry.isEmpty()) industry = Arrays.stream(Industry.values()).toList();
+            if(educationRequired == null || educationRequired.isEmpty()) educationRequired = Arrays.stream(Education.values()).toList();
+            if(companyType == null || companyType.isEmpty()) companyType = Arrays.stream(CompanyType.values()).toList();
+
+
+            Page<JobDto> jobs = jobService.getAll(
+                    page,
+                    size,
+                    sortField,
+                    sortDirection,
+                    workMode,
+                    industry,
+                    educationRequired,
+                    companyType
+            );
 
         return ResponseEntity.ok(jobs);
-    }
+        }
 
     @GetMapping("/getJobFilterOptions")
     public ResponseEntity<JobFilterOptions> getJobFilterOptions() {
