@@ -33,6 +33,7 @@ public class AppConfig {
             @Override
             protected void configure() {
                 map().setCompanyId(source.getCompany().getId());
+                map().setCompanyType(source.getCompany().getCompanyType());
             }
         });
 
