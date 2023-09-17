@@ -21,7 +21,7 @@ public interface JobRepository extends JpaRepository<Job, Integer> , JpaSpecific
 
     Optional<Job> findByCompany(Company company);
 
-    Page<Job> findByWorkModeInOrIndustryInOrEducationRequiredInOrCompanyCompanyTypeIn(
+    Page<Job> findByWorkModeInAndIndustryInAndEducationRequiredInAndCompanyCompanyTypeIn(
             List<WorkMode> workMode,
             List<Industry> industry,
             List<Education> educationRequired,

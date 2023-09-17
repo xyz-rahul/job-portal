@@ -4,7 +4,6 @@ import com.example.jobPortal.entity.Job;
 import com.example.jobPortal.payload.job.JobCreateDto;
 import com.example.jobPortal.payload.job.JobDto;
 import com.example.jobPortal.payload.job.JobUpdateDto;
-import com.example.jobPortal.repository.querySpecification.CustomSpecification;
 import com.example.jobPortal.repository.JobRepository;
 import com.example.jobPortal.service.JobService;
 import com.example.jobPortal.utils.CompanyType;
@@ -17,11 +16,9 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
-import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Map;
 import java.util.stream.Collectors;
 
 @Service
@@ -91,7 +88,7 @@ public class JobServiceImpl implements JobService {
                 sortBy);
         Pageable pageable = PageRequest.of(pageNumber, pageSize, sort);
 
-        Page<Job> jobPage = jobRepository.findByWorkModeInOrIndustryInOrEducationRequiredInOrCompanyCompanyTypeIn(
+        Page<Job> jobPage = jobRepository.findByWorkModeInAndIndustryInAndEducationRequiredInAndCompanyCompanyTypeIn(
                 workMode,
                 industry,
                 educationRequired,
