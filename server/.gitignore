@@ -28,9 +28,8 @@ target/
 build/
 !**/src/main/**/build/
 #Custom
-test/
+
 !**/src/test/**/build/
 
 ### VS Code ###
 .vscode/
-test/
