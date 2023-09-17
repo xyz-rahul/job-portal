@@ -5,6 +5,7 @@ import com.example.jobPortal.payload.job.JobDto;
 import com.example.jobPortal.payload.job.JobUpdateDto;
 import com.example.jobPortal.service.JobService;
 import com.example.jobPortal.utils.*;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.deser.std.EnumDeserializer;
 import org.modelmapper.ModelMapper;
@@ -79,10 +80,10 @@ public class JobController {
             @RequestParam(value = "page size",defaultValue = "10",required = false) int size,
             @RequestParam(value = "sort field",defaultValue = "id",required = false) String sortField,
             @RequestParam(value = "sort direction",defaultValue = "ASC",required = false) String sortDirection,
-            @RequestParam(value = "education required",required = false)  List<Education> educationRequired,
-            @RequestParam(value = "work mode",required = false) List<WorkMode> workMode,
-            @RequestParam(value = "industry",required = false) List<Industry> industry,
-            @RequestParam(value = "company type",required = false) List<CompanyType> companyType
+            @RequestParam(value = "Education",required = false)  List<Education> educationRequired,
+            @RequestParam(value = "Work Mode",required = false) List<WorkMode> workMode,
+            @RequestParam(value = "Industry",required = false) List<Industry> industry,
+            @RequestParam(value = "Company Type",required = false) List<CompanyType> companyType
             ) {
 
             //null are not allowed in repo function
