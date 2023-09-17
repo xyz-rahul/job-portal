@@ -36,6 +36,6 @@ public class CompanyUpdateDto {
 
     private String description;
 
-    @JsonProperty("company type")
+    @JsonProperty("company_type")
     private CompanyType companyType;
 }

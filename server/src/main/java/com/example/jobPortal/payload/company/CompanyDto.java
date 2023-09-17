@@ -38,7 +38,7 @@ public class CompanyDto {
 
     private String description;
 
-    @JsonProperty("company type")
+    @JsonProperty("company_type")
     private CompanyType companyType;
 
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss") // Customize date format
