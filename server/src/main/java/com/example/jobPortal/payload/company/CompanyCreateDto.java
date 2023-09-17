@@ -36,6 +36,7 @@ public class CompanyCreateDto {
 
     private String description;
 
+    @JsonFormat(shape = JsonFormat.Shape.OBJECT)
     @JsonProperty("company_type")
     private CompanyType companyType;
 }
