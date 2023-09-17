@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react'
-import Sidebar from './Sidebar'
 import JobListing from './JobListing'
 import { FilterOptionContext, JobsContext } from './Context';
-import { fetchAllJobs } from '../api/jobApi';
+import SideBarPanel from './SideBarPanel';
+import { BASE_URL } from '../api/apiUtils';
+import axios from 'axios';
 
 export default function Job() {
     //setting height of jobs
@@ -20,38 +21,41 @@ export default function Job() {
       }, []);
 
 
-      const [filterOption, setFilterOption] = useState();
-      const [jobs, setJobs] = useState([]);
+    const [filterOption, setFilterOption] = useState({});
+    const [jobs, setJobs] = useState([]);
 
-      useEffect(() => {
-        const fetchData = async () => {
+    useEffect(() => {
 
-          try {
-            const jobsData = await fetchAllJobs({
-              pageNumber: 0,
-              pageSize: 10,
-              sortField: 'id',
-              sortDirection: 'asc',
-              filter: filterOption, 
-            });
+      const filterKeys = Object.keys(filterOption);
+      const filterParams = filterKeys.map((key) => {
+        const values = filterOption[key];
+        const encodedValues = values.map(encodeURIComponent).join('&' + key + '=');
+        return `${key}=${encodedValues}`;
+      }).join('&');
 
-            setJobs(jobsData);
-          } catch (error) {
-            //todo
-            console.error('Error fetching jobs:', error);
-          }
+      // Add the filterParams to your base URL
+      const filteredURL = `${BASE_URL}/jobs/all?${filterParams}`;
 
-        };
+      // Now you can use this filteredURL for your API request
+      setJobs(fetchJobs(filteredURL));
 
-          fetchData();
+    }, [filterOption]);
 
-      }, [filterOption]);
+    const fetchJobs = async (URL) => {
+      try {
+        const response = await axios.get(URL);
+        console.log(response.data.content);
+        return response.data.content;
+      } catch (error) {
+
+      }
+    }
 
   return (
     <div className="job">
-        <FilterOptionContext.Provider value={{filterOption, setFilterOption}}>
-      <Sidebar filterOption={filterOption} setFilterOption={setFilterOption} />
-      </FilterOptionContext.Provider>
+      <FilterOptionContext.Provider value={{filterOption, setFilterOption}}>
+          <SideBarPanel filterOption={filterOption} setFilterOption={setFilterOption} />
+      </FilterOptionContext.Provider> 
     
       <JobsContext.Provider value={{jobs, setJobs}}>
         <JobListing />
